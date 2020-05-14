@@ -1,0 +1,44 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.6/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.6",
+    "version": "1.0.5",
+    "showLoadingIndicator": false,
+    "id": "d8a3bfff-e560-46ad-aff0-f3aa7c5d7d4b",
+    "packageName": "ch.fritscher.timekeeper",
+    "developer": {
+        "name": "Fritscher",
+        "websiteUrl": "https://fritscher.ch",
+        "privacyUrl": "https://fritscher.ch",
+        "termsOfUseUrl": "https://fritscher.ch"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "Timekeeper",
+        "full": "Timekeeper"
+    },
+    "description": {
+        "short": "Timekeeper Coutdown",
+        "full": "Mention bot in a message it will create a link to a countdown timer if pattern mm:ss is detected. Title is everything before the first comma."
+    },
+    "accentColor": "#235EA5",
+    "bots": [
+        {
+            "botId": "b917ce59-def6-4b6d-894e-8d2c23a98887",
+            "scopes": [
+                "personal",
+                "team",
+                "groupchat"
+            ],
+            "supportsFiles": false,
+            "isNotificationOnly": false
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
+}

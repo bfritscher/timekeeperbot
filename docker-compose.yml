@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  node:
+    image: node:12
+    restart: always
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.services.timekeeper.loadbalancer.server.port=3978"
+      - "traefik.http.routers.timekeeper_secured.rule=Host(`timekeeper.bf0.ch`)"
+      - "traefik.http.routers.timekeeper_secured.entrypoints=websecure"
+      - "traefik.http.routers.timekeeper_secured.tls=true"
+      - "traefik.http.routers.timekeeper_secured.tls.certresolver=myresolver"
+    volumes:
+      - ./:/home/node/app
+    command: "npm start"
+    networks:
+      - web
+      - default
+networks:
+  web:
+    external: true
+
