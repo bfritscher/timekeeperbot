@@ -31,10 +31,9 @@ class TimeKeeperBot extends TeamsActivityHandler {
                 const min = parseInt(m[1], 10);
                 const sec = parseInt(m[2], 10);
                 const duration = ((min * 60) + sec) * 1000;
-                const datetz = new Date(context.activity.rawTimestamp);
-                const tzoffset = datetz.getTimezoneOffset() * 60000; // offset in milliseconds
-                datetz.setTime(datetz.getTime() + duration);
-                const localISOTime = (new Date(datetz - tzoffset)).toISOString().slice(0, 19);
+                const datelocal = new Date(context.activity.rawLocalTimestamp.slice(0, 19));
+                datelocal.setTime(datelocal.getTime() + duration);
+                const localISOTime = datelocal.toISOString().slice(0, 19);
                 const replyText = `Voici le [minuteur de ${ m[0] }](https://vclock.com/embed/timer/#countdown=00:${ min }:${ sec }&date=${ localISOTime }&onzero=2&title=${ title }&showmessage=0&theme=1&ampm=0&sound=harp)`;
                 await context.sendActivity(MessageFactory.text(replyText, replyText));
                 if (duration > 30000) {

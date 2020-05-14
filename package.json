@@ -7,7 +7,7 @@
     "main": "index.js",
     "scripts": {
         "start": "npm install && node ./index.js",
-        "watch": "nodemon ./index.js",
+        "watch": "npm install && nodemon --legacy-watch ./index.js",
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
